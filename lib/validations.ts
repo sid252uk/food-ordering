@@ -19,7 +19,7 @@ export const restaurantSchema = z.object({
   city: z.string().min(1, "City is required"),
   state: z.string().min(1, "State is required"),
   postal_code: z.string().min(1, "Postal code is required"),
-  country: z.string().default("US"),
+  country: z.string().optional(),
 })
 
 export type RestaurantFormValues = z.infer<typeof restaurantSchema>
@@ -35,16 +35,16 @@ export const restaurantSettingsSchema = z.object({
   city: z.string().optional(),
   state: z.string().optional(),
   postal_code: z.string().optional(),
-  country: z.string().default("US"),
-  accepts_delivery: z.boolean().default(true),
-  accepts_pickup: z.boolean().default(true),
-  delivery_fee: z.number().min(0).default(0),
-  min_order_amount: z.number().min(0).default(0),
-  estimated_delivery_minutes: z.number().int().positive().default(30),
-  estimated_pickup_minutes: z.number().int().positive().default(15),
-  tax_rate: z.number().min(0).max(100).default(0),
+  country: z.string().optional(),
+  accepts_delivery: z.boolean().optional(),
+  accepts_pickup: z.boolean().optional(),
+  delivery_fee: z.number().min(0).optional(),
+  min_order_amount: z.number().min(0).optional(),
+  estimated_delivery_minutes: z.number().int().positive().optional(),
+  estimated_pickup_minutes: z.number().int().positive().optional(),
+  tax_rate: z.number().min(0).max(100).optional(),
   stripe_publishable_key: z.string().optional(),
-  timezone: z.string().default("UTC"),
+  timezone: z.string().optional(),
 })
 
 export type RestaurantSettingsFormValues = z.infer<typeof restaurantSettingsSchema>
@@ -118,7 +118,7 @@ export const addressSchema = z.object({
   city: z.string().min(1, "City is required"),
   state: z.string().min(1, "State is required"),
   postal_code: z.string().min(1, "Postal code is required"),
-  country: z.string().default("US"),
+  country: z.string().optional(),
   delivery_notes: z.string().optional(),
 })
 
