@@ -36,8 +36,10 @@ export default async function OrderHistoryPage({ params }: { params: Promise<{ s
     <div className="space-y-3">
       <h2 className="font-semibold text-lg">Order history</h2>
       {orders.map((order) => {
-        const itemNames = order.order_items
-          .map((i) => {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const itemNames = (order as any).order_items
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          .map((i: any) => {
             const snap = i.menu_item_snapshot as { name?: string } | null
             return snap?.name ?? "Item"
           })

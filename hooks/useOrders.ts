@@ -17,7 +17,7 @@ export function useOrder(orderId: string | null) {
         .eq("id", orderId!)
         .single()
       if (error) throw error
-      return data as OrderWithItems
+      return data as unknown as OrderWithItems
     },
     enabled: !!orderId,
   })
@@ -37,7 +37,7 @@ export function useCustomerOrders() {
         .order("created_at", { ascending: false })
         .limit(20)
       if (error) throw error
-      return data as OrderWithItems[]
+      return data as unknown as OrderWithItems[]
     },
   })
 }
@@ -54,7 +54,7 @@ export function useAdminOrders(restaurantId: string | null) {
         .order("created_at", { ascending: false })
         .limit(100)
       if (error) throw error
-      return data as OrderWithItems[]
+      return data as unknown as OrderWithItems[]
     },
     enabled: !!restaurantId,
     refetchInterval: 30000,
@@ -73,7 +73,8 @@ export function useUpdateOrderStatus(restaurantId: string) {
         updates.completed_at = new Date().toISOString()
       const { data, error } = await supabase
         .from("orders")
-        .update(updates)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        .update(updates as any)
         .eq("id", orderId)
         .select()
         .single()

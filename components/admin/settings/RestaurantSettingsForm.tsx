@@ -103,7 +103,8 @@ export function RestaurantSettingsForm({ restaurant }: { restaurant: Restaurant 
       updateData.stripe_webhook_secret_encrypted = Buffer.from(stripeWebhookSecret).toString("base64")
     }
 
-    const { error } = await supabase.from("restaurants").update(updateData).eq("id", restaurant.id)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await supabase.from("restaurants").update(updateData as any).eq("id", restaurant.id)
     setSaving(false)
 
     if (error) {

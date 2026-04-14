@@ -53,9 +53,9 @@ export function useMenu({ restaurantId, search, dietaryFilters }: UseMenuOptions
       if (itemsError) throw itemsError
 
       return (categories ?? []).map((cat) => ({
-        ...cat,
+        ...(cat as object),
         items: (items ?? []).filter((item) => item.category_id === cat.id),
-      })) as MenuCategoryWithItems[]
+      })) as unknown as MenuCategoryWithItems[]
     },
     staleTime: 2 * 60 * 1000,
     enabled: !!restaurantId,

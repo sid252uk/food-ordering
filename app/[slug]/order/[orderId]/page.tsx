@@ -17,5 +17,5 @@ export default async function OrderTrackerPage({
 
   if (!order) notFound()
 
-  return <OrderTracker initialOrder={order as Parameters<typeof OrderTracker>[0]["initialOrder"]} />
+  return <OrderTracker initialOrder={order as unknown as Parameters<typeof OrderTracker>[0]["initialOrder"]} />
 }

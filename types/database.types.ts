@@ -57,6 +57,7 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -159,6 +160,7 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -195,6 +197,7 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -258,6 +261,7 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -300,6 +304,7 @@ export type Database = {
           display_order?: number
           created_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -333,6 +338,7 @@ export type Database = {
           is_active?: boolean
           created_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -381,6 +387,7 @@ export type Database = {
           is_default?: boolean
           created_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -435,6 +442,7 @@ export type Database = {
           expires_at?: string | null
           created_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -561,6 +569,7 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -600,6 +609,7 @@ export type Database = {
           special_instructions?: string | null
           created_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -630,6 +640,7 @@ export type Database = {
           choice_name?: string
           price_modifier?: number
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -681,6 +692,7 @@ export type Database = {
           created_at?: string
           updated_at?: string
         }
+        Relationships: []
       }
 
       // ------------------------------------------------------------------
@@ -717,19 +729,7 @@ export type Database = {
           is_published?: boolean
           created_at?: string
         }
-      }
-    }
-
-    Views: Record<string, never>
-
-    Functions: {
-      is_restaurant_owner: {
-        Args: { rid: string }
-        Returns: boolean
-      }
-      increment_promo_usage: {
-        Args: Record<string, never>
-        Returns: undefined
+        Relationships: []
       }
     }
 
@@ -750,6 +750,18 @@ export type Database = {
       payment_status: "pending" | "pending_cash" | "completed" | "failed" | "refunded"
       selection_type: "single" | "multiple"
       user_role: "customer" | "restaurant_owner"
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      is_restaurant_owner: {
+        Args: { rid: string }
+        Returns: boolean
+      }
+    }
+    CompositeTypes: {
+      [_ in never]: never
     }
   }
 }

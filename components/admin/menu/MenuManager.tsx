@@ -29,7 +29,7 @@ export function MenuManager({ restaurant }: { restaurant: { id: string; slug: st
         .eq("restaurant_id", restaurant.id)
         .order("display_order")
       if (error) throw error
-      return data as MenuCategoryWithItems[]
+      return data as unknown as MenuCategoryWithItems[]
     },
   })
 

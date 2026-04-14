@@ -2,7 +2,7 @@ import Stripe from "stripe"
 
 export function getStripeServer(secretKey: string) {
   return new Stripe(secretKey, {
-    apiVersion: "2025-04-30.basil",
+    apiVersion: "2026-03-25.dahlia",
   })
 }
 

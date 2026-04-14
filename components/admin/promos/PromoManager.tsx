@@ -150,7 +150,7 @@ function PromoForm({ restaurantId, promo, onClose, onSaved }: { restaurantId: st
           <div className="grid grid-cols-2 gap-4">
             <div className="space-y-2">
               <Label>Type</Label>
-              <Select value={form.promo_type} onValueChange={(v) => setForm((f) => ({ ...f, promo_type: v }))}>
+              <Select value={form.promo_type} onValueChange={(v) => setForm((f) => ({ ...f, promo_type: v as "percentage" | "fixed_amount" }))}>
                 <SelectTrigger><SelectValue /></SelectTrigger>
                 <SelectContent>
                   <SelectItem value="percentage">Percentage (%)</SelectItem>

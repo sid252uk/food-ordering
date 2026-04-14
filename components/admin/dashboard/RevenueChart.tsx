@@ -13,7 +13,7 @@ export function RevenueChart({ data }: { data: Array<{ date: string; revenue: nu
         <LineChart data={data}>
           <XAxis dataKey="date" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
           <YAxis tick={{ fontSize: 11 }} tickLine={false} axisLine={false} tickFormatter={(v) => `$${v}`} />
-          <Tooltip formatter={(v: number) => [`$${v.toFixed(2)}`, "Revenue"]} />
+          <Tooltip formatter={(v) => [`$${Number(v).toFixed(2)}`, "Revenue"]} />
           <Line type="monotone" dataKey="revenue" stroke="#2563eb" strokeWidth={2} dot={false} />
         </LineChart>
       </ResponsiveContainer>

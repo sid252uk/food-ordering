@@ -16,7 +16,7 @@ export type CreatePaymentIntentRequest = {
     city: string
     state: string
     postal_code: string
-    country: string
+    country?: string
     delivery_notes?: string
   }
   special_instructions?: string
@@ -54,7 +54,7 @@ export type CreateCashOrderRequest = {
     city: string
     state: string
     postal_code: string
-    country: string
+    country?: string
     delivery_notes?: string
   }
   contact: { name: string; email: string; phone: string }

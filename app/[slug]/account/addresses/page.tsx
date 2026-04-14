@@ -27,7 +27,7 @@ export default function AddressesPage() {
     const supabase = createClient()
     const { data: { user } } = await supabase.auth.getUser()
     if (!user) return
-    const { data } = await supabase.from("addresses").select("*").eq("user_id", user.id).order("created_at")
+    const { data } = await supabase.from("addresses").select("*").eq("customer_id", user.id).order("created_at")
     setAddresses(data ?? [])
     setLoading(false)
   }
@@ -125,7 +125,7 @@ function AddressForm({ addressId, onClose, onSaved }: { addressId: string | null
       if (error) { toast.error("Failed to update address"); return }
       toast.success("Address updated")
     } else {
-      const { error } = await supabase.from("addresses").insert({ ...data, user_id: user.id })
+      const { error } = await supabase.from("addresses").insert({ ...data, customer_id: user.id })
       if (error) { toast.error("Failed to save address"); return }
       toast.success("Address saved")
     }

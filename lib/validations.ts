@@ -56,7 +56,7 @@ export type RestaurantSettingsFormValues = z.infer<typeof restaurantSettingsSche
 export const menuCategorySchema = z.object({
   name: z.string().min(1, "Category name is required"),
   description: z.string().optional(),
-  is_active: z.boolean().default(true),
+  is_active: z.boolean().optional(),
 })
 
 export type MenuCategoryFormValues = z.infer<typeof menuCategorySchema>
@@ -94,15 +94,15 @@ export const menuItemSchema = z.object({
   base_price: z.number().positive("Price must be greater than 0"),
   category_id: z.string().uuid("Invalid category"),
   // Dietary flags
-  is_vegetarian: z.boolean().default(false),
-  is_vegan: z.boolean().default(false),
-  is_gluten_free: z.boolean().default(false),
-  contains_nuts: z.boolean().default(false),
-  is_spicy: z.boolean().default(false),
+  is_vegetarian: z.boolean().optional(),
+  is_vegan: z.boolean().optional(),
+  is_gluten_free: z.boolean().optional(),
+  contains_nuts: z.boolean().optional(),
+  is_spicy: z.boolean().optional(),
   // Display
-  is_featured: z.boolean().default(false),
+  is_featured: z.boolean().optional(),
   // Modifier options
-  options: z.array(menuItemOptionSchema).default([]),
+  options: z.array(menuItemOptionSchema).optional(),
 })
 
 export type MenuItemFormValues = z.infer<typeof menuItemSchema>
@@ -183,7 +183,7 @@ export const profileSchema = z.object({
   first_name: z.string().min(1, "First name is required"),
   last_name: z.string().min(1, "Last name is required"),
   phone: z.string().optional(),
-  marketing_opt_in: z.boolean().default(false),
+  marketing_opt_in: z.boolean().optional(),
 })
 
 export type ProfileFormValues = z.infer<typeof profileSchema>

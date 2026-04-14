@@ -35,5 +35,5 @@ export default async function OrderConfirmationPage({
 
   if (!order) redirect(`/${slug}`)
 
-  return <OrderConfirmation order={order as Parameters<typeof OrderConfirmation>[0]["order"]} />
+  return <OrderConfirmation order={order as unknown as Parameters<typeof OrderConfirmation>[0]["order"]} />
 }

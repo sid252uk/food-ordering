@@ -41,7 +41,7 @@ export default async function RestaurantMenuPage({ params }: { params: Promise<{
   return (
     <MenuPage
       restaurant={restaurant as Restaurant}
-      initialCategories={(categories ?? []) as MenuCategoryWithItems[]}
+      initialCategories={(categories ?? []) as unknown as MenuCategoryWithItems[]}
     />
   )
 }
